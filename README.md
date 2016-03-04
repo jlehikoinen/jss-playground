@@ -45,7 +45,7 @@ Run MySQL container and your custom JSS container:
 
 `$ docker-compose up -d`
 
-> Note that if you have configured SMTP server and enabled email notifications in JSS you should consider this next option  carefully. Your organization's JSS admins might receive "The JSS webapp has been stopped/started." _false_ emails when you run JSS on your Mac..
+> **Note that if you have configured SMTP server and enabled email notifications in JSS you should consider this next option  carefully. Your organization's JSS admins might receive "The JSS webapp has been stopped/started." _false_ emails when you run JSS on your Mac..**
 
 Run MySQL container, your custom JSS container and import MySQL database. Before running this option, rename your database dump to `db.sql` and place it to the root of working dir:
 
