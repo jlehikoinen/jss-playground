@@ -1,0 +1,7 @@
+# JSS
+ROOT.war
+US_export_policy.jar
+local_policy.jar
+
+.DS_Store
+*.pyc
