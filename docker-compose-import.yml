@@ -1,0 +1,38 @@
+data:
+  image: ubuntu:15.10
+  volumes:
+    - /var/lib/mysql
+  command: "true"
+
+mysql:
+  restart: always
+  image: mysql:5.6
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: jamfsoftware
+    MYSQL_USER: jamfsoftware
+    MYSQL_PASSWORD: jamfsw03
+  volumes_from:
+    - data
+  ports:
+    - "3306:3306"
+
+jss:
+  restart: always
+  image: my-jss
+  links:
+    - mysql
+  ports:
+    - "8443:8443"
+
+import_db:
+  image: mysql:5.6
+  links:
+    - mysql
+  working_dir: /code
+  command: sh import_db.sh
+  environment:
+    - IMPORT_DATABASE=db.sql
+  volumes:
+    - ./code:/code
+    - .:/tmp

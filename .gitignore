@@ -3,5 +3,9 @@ ROOT.war
 US_export_policy.jar
 local_policy.jar
 
+# MySQL
+*.sql
+*.sql.gz
+
 .DS_Store
 *.pyc

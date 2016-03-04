@@ -33,11 +33,11 @@ Note that you might need to reboot the Docker host before building the image bec
 
 ## Run containers with Docker Compose
 
-Run all containers with Docker Compose:
-
 `$ docker-compose up -d`
 
-_OR_
+## Import MySQL database
+
+`$ docker-compose -f docker-compose-import.yml up -d`
 
 ## Run containers separately
 
