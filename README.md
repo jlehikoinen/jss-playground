@@ -39,6 +39,8 @@ Note that you might need to reboot the Docker host before building the image bec
 
 ## Run containers with Docker Compose (2 options)
 
+First make changes to yaml files if needed.
+
 Run MySQL container and your custom JSS container:
 
 `$ docker-compose up -d`
