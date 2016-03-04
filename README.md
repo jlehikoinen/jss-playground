@@ -37,15 +37,15 @@ Edit `keystorePass` in `server.xml`
 
 Note that you might need to reboot the Docker host before building the image because of low entropy. More info [here](https://blog.pivotal.io/pivotal-cloud-foundry/features/challenges-with-randomness-in-multi-tenant-linux-container-platforms).
 
-## Run containers with Docker Compose
+## Run containers with Docker Compose (2 options)
 
 Run MySQL container and your custom JSS container:
 
 `$ docker-compose up -d`
 
-## Import MySQL database
+## Import JSS MySQL database
 
-Run MySQL container and your custom JSS container and import MySQL database. Before running this option, rename your database dump to `db.sql` and place it to the root of working dir:
+Run MySQL container, your custom JSS container and import MySQL database. Before running this option, rename your database dump to `db.sql` and place it to the root of working dir:
 
 `$ docker-compose -f docker-compose-import.yml up -d`
 
@@ -86,15 +86,17 @@ my-jss
 
 ### Import MySQL database
 
-`$ docker run -it --rm --link=mysql_app:mysql -v "$PWD":/tmp mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" "$MYSQL_ENV_MYSQL_DATABASE" < /tmp/db.sql'`
+```
+$ docker run -it --rm --link=mysql_app:mysql -v "$PWD":/tmp mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" "$MYSQL_ENV_MYSQL_DATABASE" < /tmp/db.sql'
+```
 
 ## JSS Setup Assistant
 
-Get Docker Machine (`default`) IP address if running locally on Mac:
+Get Docker Machine (`default`) IP address if you're running Docker locally on your Mac:
 
 `$ docker-machine ip default`
 
-URL: `https://<ip-address>:8443`
+Go to URL: `https://<ip-address>:8443`
 
 Select Edit Connection
 
