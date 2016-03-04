@@ -86,28 +86,30 @@ my-jss
 
 ### Import MySQL database
 
-```
-$ docker run -it --rm --link=mysql_app:mysql -v "$PWD":/tmp mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" "$MYSQL_ENV_MYSQL_DATABASE" < /tmp/db.sql'
-```
+`$ docker run -it --rm --link=mysql_app:mysql -v "$PWD":/tmp mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" "$MYSQL_ENV_MYSQL_DATABASE" < /tmp/db.sql'`
 
-## JSS Setup Assistant
+## Access JSS
 
 Get Docker Machine (`default`) IP address if you're running Docker locally on your Mac:
 
 `$ docker-machine ip default`
 
-Go to URL: `https://<ip-address>:8443`
+Go to URL: `https://<docker-machine IP address>:8443`
+
+Log in with your JSS account
+
+### JSS Setup Assistant (if no database was imported)
 
 Select Edit Connection
 
 **Edit Database Connection**
 
-* Database Hostname: `<docker-machine ip>` : `3306`
+* Database Hostname: `<docker-machine IP address>` : `3306`
 * Database: `jamfsoftware`
 * Database Username: `jamfsoftware`
 * Database Password: `jamfsw03`
 
-Enter Activation Code and finish JSS Setup Assistant.
+Enter Activation Code and finish JSS Setup Assistant
 
 ## After testing
 
