@@ -4,6 +4,12 @@ Source: <https://github.com/macadmins/docker-jss>
 
 Dockerfile by: [Nick McSpadden](https://github.com/nmcspadden)
 
+## Docker images
+
+* [Ubuntu](https://hub.docker.com/_/ubuntu/) (for data container)
+* [MySQL](https://registry.hub.docker.com/_/mysql/)
+* [Tomcat](https://hub.docker.com/_/tomcat/)
+
 ## Requirements
 
 * Download JSS Manual Installation from JAMF Nation My Assets > My Products
@@ -33,9 +39,13 @@ Note that you might need to reboot the Docker host before building the image bec
 
 ## Run containers with Docker Compose
 
+Run MySQL container and your custom JSS container:
+
 `$ docker-compose up -d`
 
 ## Import MySQL database
+
+Run MySQL container and your custom JSS container and import MySQL database. Before running this option, rename your database dump to `db.sql` and place it to the root of working dir:
 
 `$ docker-compose -f docker-compose-import.yml up -d`
 
@@ -74,6 +84,10 @@ $ docker run -d \
 my-jss
 ```
 
+### Import MySQL database
+
+`$ docker run -it --rm --link=mysql_app:mysql -v "$PWD":/tmp mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" "$MYSQL_ENV_MYSQL_DATABASE" < /tmp/db.sql'`
+
 ## JSS Setup Assistant
 
 Get Docker Machine (`default`) IP address if running locally on Mac:
@@ -84,9 +98,17 @@ URL: `https://<ip-address>:8443`
 
 Select Edit Connection
 
+**Edit Database Connection**
+
 * Database Hostname: `<docker-machine ip>` : `3306`
 * Database: `jamfsoftware`
 * Database Username: `jamfsoftware`
 * Database Password: `jamfsw03`
 
 Enter Activation Code and finish JSS Setup Assistant.
+
+## After testing
+
+Stop and delete all containers:
+
+`$ docker stop $(docker ps -aq) && docker rm $(docker ps -aq)`
