@@ -3,7 +3,7 @@
 # Import MySQL db to Docker container
 
 echo "Waiting for the MySQL container to start up.."
-sleep 10
+sleep 20
 
 echo "Importing db.."
 mysql -h"$MYSQL_PORT_3306_TCP_ADDR" \
