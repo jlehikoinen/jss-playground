@@ -21,13 +21,10 @@ Clone this repo:
 
 `$ git clone https://github.com/jlehikoinen/jss-playground.git`
 
-Copy `ROOT.war` to `jss-playground`
-
-Copy `US_export_policy.jar` and `local_policy.jar` to `jss-playground`
-
-Edit `tomcatKeystore.sh` variables
-
-Edit `keystorePass` in `server.xml`
+* Copy `ROOT.war` to `jss-playground`
+* Copy `US_export_policy.jar` and `local_policy.jar` to `jss-playground`
+* Edit `tomcatKeystore.sh` variables
+* Edit `keystorePass` in `server.xml`
 
 ## Build JSS Docker image
 
@@ -59,10 +56,6 @@ Get Docker Machine (`default`) IP address if you're running Docker locally on yo
 
 Go to URL: `https://<docker-machine IP address>:8443`
 
-Log in with your JSS credentials
-
-### JSS Setup Assistant (if no database was imported)
-
 Select Edit Connection
 
 **Edit Database Connection**
@@ -72,8 +65,11 @@ Select Edit Connection
 * Database Username: `jamfsoftware`
 * Database Password: `jamfsw03`
 
-Enter Activation Code and finish JSS Setup Assistant
+Log in with your JSS credentials
 
+### JSS Setup Assistant (if no database was imported)
+
+Enter Activation Code and finish JSS Setup Assistant
 
 ## Run containers separately
 
