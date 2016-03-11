@@ -1,5 +1,5 @@
 # JSS
-ROOT.war
+*.war
 US_export_policy.jar
 local_policy.jar
 
