@@ -19,7 +19,7 @@ mysql:
 
 jss:
   restart: always
-  image: my-jss
+  image: jss-beta
   links:
     - mysql
   ports:
